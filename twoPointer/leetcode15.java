@@ -70,3 +70,68 @@ class Solution {
         return ans;
     }
 }
+
+
+
+
+//////
+
+
+
+
+
+
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] arr) {
+        
+      List<List<Integer>> ans = new ArrayList<>();
+
+      
+       Arrays.sort(arr);
+
+      for(int i = 0; i < arr.length - 2; i++){
+         
+
+         // Removing duplicate pair
+         if( i > 0 && arr[i] == arr[i-1]) continue;
+
+          int start = i + 1;
+          int end = arr.length - 1;
+
+          while(start < end){
+               
+
+                int value = arr[i] + arr[start] + arr[end];
+
+
+                if(value == 0){
+                    ans.add(new ArrayList<>(Arrays.asList(arr[i],arr[start],arr[end])));
+
+               // Removing starting duplicate  value
+               while(start < end && arr[start] == arr[start+1]) start++;
+               while(start < end && arr[end] == arr[end - 1]) end--;
+
+                    start++;
+                    end--;
+                }
+
+
+                if(value > 0){
+                    end--;
+                }
+
+               if(value < 0){
+                    start++;
+                }
+                 
+          }
+
+      }
+
+ 
+      return ans;
+
+
+    }
+}
